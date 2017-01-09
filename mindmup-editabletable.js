@@ -12,10 +12,13 @@ $.fn.editableTableWidget = function (options) {
 			element = $(this),
 			editor = activeOptions.editor.css('position', 'absolute').hide().appendTo(element.parent()),
 			active,
+      activeClasses,
 			showEditor = function (select) {
 				active = element.find('td:focus');
+        activeClasses = active[0].className;
 				if (active.length) {
 					editor.val(active.text())
+            .addClass(activeClasses)
 						.removeClass('error')
 						.show()
 						.offset(active.offset())
